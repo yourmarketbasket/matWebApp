@@ -11,15 +11,20 @@ export class StorageService {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  setItem(key: string, value: any): void {
+  setItem(key: string, value: any, rememberMe: boolean = false): void {
     if (this.isBrowser) {
-      localStorage.setItem(key, JSON.stringify(value));
+      const storage = rememberMe ? localStorage : sessionStorage;
+      storage.setItem(key, JSON.stringify(value));
     }
   }
 
   getItem(key: string): any | null {
     if (this.isBrowser) {
-      const item = localStorage.getItem(key);
+      let item = localStorage.getItem(key);
+      if (item) {
+        return JSON.parse(item);
+      }
+      item = sessionStorage.getItem(key);
       return item ? JSON.parse(item) : null;
     }
     return null;
@@ -28,6 +33,7 @@ export class StorageService {
   removeItem(key: string): void {
     if (this.isBrowser) {
       localStorage.removeItem(key);
+      sessionStorage.removeItem(key);
     }
   }
 }

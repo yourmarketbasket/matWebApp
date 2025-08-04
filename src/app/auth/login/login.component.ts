@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      mfaCode: ['']
+      mfaCode: [''],
+      rememberMe: [false]
     });
   }
 
@@ -32,9 +33,9 @@ export class LoginComponent implements OnInit {
     }
 
     this.errorMessage = null;
-    const { email, password, mfaCode } = this.loginForm.value;
+    const { email, password, mfaCode, rememberMe } = this.loginForm.value;
 
-    this.authService.login(email, password, mfaCode || undefined).subscribe({
+    this.authService.login(email, password, mfaCode || undefined, rememberMe).subscribe({
       next: (user) => {
         // Navigate based on user role
         this.router.navigate([`/${user.role}`]);

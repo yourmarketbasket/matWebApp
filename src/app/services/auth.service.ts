@@ -4,12 +4,13 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
 import { StorageService } from './storage.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api/auth';
+  private apiUrl = `${environment.apiUrl}/auth`;
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
@@ -26,10 +27,10 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  login(email: string, password: string, mfaCode?: string): Observable<User> {
+  login(email: string, password: string, mfaCode?: string, rememberMe: boolean = false): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/login`, { email, password, mfaCode })
       .pipe(tap(user => {
-        this.storageService.setItem('currentUser', user);
+        this.storageService.setItem('currentUser', user, rememberMe);
         this.currentUserSubject.next(user);
       }));
   }
@@ -37,7 +38,8 @@ export class AuthService {
   signup(user: Partial<User>): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/signup`, user)
       .pipe(tap(user => {
-        this.storageService.setItem('currentUser', user);
+        // By default, don't remember the user on signup
+        this.storageService.setItem('currentUser', user, false);
         this.currentUserSubject.next(user);
       }));
   }

@@ -12,6 +12,7 @@ import { User } from '../../models/user.model';
 export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
   errorMessage: string | null = null;
+  roles: string[] = ['passenger', 'sacco', 'owner', 'queue_manager', 'driver', 'support_staff', 'admin', 'superuser'];
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +25,9 @@ export class SignUpComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['', Validators.required],
+      acceptTerms: [false, Validators.requiredTrue]
     });
   }
 
@@ -34,12 +37,9 @@ export class SignUpComponent implements OnInit {
     }
 
     this.errorMessage = null;
-    const { name, email, phone, password } = this.signUpForm.value;
+    const { name, email, phone, password, role } = this.signUpForm.value;
 
-    // The spec says signup is for Support Staff and Admins.
-    // The UI doesn't have a role selector, so I'll default to 'support_staff'
-    // This might need to be adjusted based on user feedback.
-    const user: Partial<User> = { name, email, phone, password, role: 'support_staff' };
+    const user: Partial<User> = { name, email, phone, password, role };
 
     this.authService.signup(user).subscribe({
       next: (user) => {

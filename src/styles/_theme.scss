@@ -4,12 +4,12 @@
 :root {
   --bs-body-bg: #{$dark-blue-bg};
   --bs-body-color: white;
-  --bs-surface-bg: #{$purple-bg};
-  --bs-border-color: #{lighten($purple-bg, 10%)};
+  --bs-surface-bg: #{$card-bg};
+  --bs-border-color: #{lighten($card-bg, 10%)};
 
   --auth-card-bg: var(--bs-surface-bg);
   --auth-card-color: var(--bs-body-color);
-  --auth-form-control-bg: #{lighten($purple-bg, 5%)};
+  --auth-form-control-bg: #{lighten($card-bg, 5%)};
   --auth-form-control-color: var(--bs-body-color);
   --auth-form-control-border: var(--bs-border-color);
   --auth-form-placeholder-color: #{lighten(white, 20%)};

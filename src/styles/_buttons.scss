@@ -16,7 +16,7 @@
 
 .btn-yellow {
   background-color: $yellow-1;
-  color: darken($yellow-1, 40%);
+  color: $yellow-1-dark;
   &:hover {
     background-color: darken($yellow-1, 10%);
   }
@@ -24,7 +24,7 @@
 
 .btn-green-1 {
   background-color: $green-1;
-  color: darken($green-1, 40%);
+  color: $green-1-dark;
   &:hover {
     background-color: darken($green-1, 10%);
   }
@@ -48,7 +48,7 @@
 
 .btn-green-3 {
   background-color: $green-3;
-  color: darken($green-3, 40%);
+  color: $green-3-dark;
   &:hover {
     background-color: darken($green-3, 10%);
   }

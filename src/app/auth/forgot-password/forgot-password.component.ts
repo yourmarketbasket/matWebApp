@@ -11,6 +11,7 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm!: FormGroup;
   errorMessage: string | null = null;
   successMessage: string | null = null;
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -23,7 +24,11 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
+  get f() { return this.forgotPasswordForm.controls; }
+
   onSubmit(): void {
+    this.submitted = true;
+
     if (this.forgotPasswordForm.invalid) {
       return;
     }

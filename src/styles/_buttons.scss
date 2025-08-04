@@ -1,0 +1,48 @@
+@import 'variables';
+
+.btn {
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-pink {
+  border: 2px solid $pink-dark;
+  color: $pink-dark;
+
+  &:hover {
+    background-color: $pink-dark;
+    color: white;
+  }
+}
+
+.btn-green {
+  background-color: $green-light;
+  color: $green-dark;
+  border: none;
+
+  &:hover {
+    background-color: darken($green-light, 5%);
+  }
+}
+
+.btn-amber {
+  background-color: $amber-light;
+  color: $amber-dark;
+  border: none;
+
+  &:hover {
+    background-color: darken($amber-light, 5%);
+  }
+}
+
+.btn-purple {
+  background-color: $purple-light;
+  color: $purple-dark;
+  border: none;
+
+  &:hover {
+    background-color: darken($purple-light, 5%);
+  }
+}

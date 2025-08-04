@@ -81,8 +81,14 @@
 body {
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);
+  font-family: 'Poppins', sans-serif;
 }
 
 .card {
     background-color: var(--bs-surface-bg);
 }
+
+// Custom theme files
+@import "styles/variables";
+@import "styles/buttons";
+@import "styles/themes";

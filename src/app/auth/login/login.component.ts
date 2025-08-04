@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   errorMessage: string | null = null;
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +28,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  get f() { return this.loginForm.controls; }
+
   onSubmit(): void {
+    this.submitted = true;
+
     if (this.loginForm.invalid) {
       return;
     }

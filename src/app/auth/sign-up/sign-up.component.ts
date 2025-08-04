@@ -12,7 +12,18 @@ import { User } from '../../models/user.model';
 export class SignUpComponent implements OnInit {
   signUpForm!: FormGroup;
   errorMessage: string | null = null;
-  roles: string[] = ['passenger', 'sacco', 'owner', 'queue_manager', 'driver', 'support_staff', 'admin', 'superuser'];
+  roleMap = new Map<string, string>([
+    ['passenger', 'Passenger'],
+    ['sacco', 'Sacco'],
+    ['owner', 'Owner'],
+    ['queue_manager', 'Queue Manager'],
+    ['driver', 'Driver'],
+    ['support_staff', 'Support Staff'],
+    ['admin', 'Admin'],
+    ['superuser', 'Superuser']
+  ]);
+  roles: string[] = Array.from(this.roleMap.keys());
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -31,7 +42,11 @@ export class SignUpComponent implements OnInit {
     });
   }
 
+  get f() { return this.signUpForm.controls; }
+
   onSubmit(): void {
+    this.submitted = true;
+
     if (this.signUpForm.invalid) {
       return;
     }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -8,9 +9,11 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;
   errorMessage: string | null = null;
+  isButtonDisabled = true;
+  private formSubscription!: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -24,6 +27,16 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
       mfaCode: ['']
     });
+
+    this.formSubscription = this.loginForm.statusChanges.subscribe(status => {
+      this.isButtonDisabled = status === 'INVALID';
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.formSubscription) {
+      this.formSubscription.unsubscribe();
+    }
   }
 
   onSubmit(): void {

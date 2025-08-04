@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
 
@@ -9,9 +10,21 @@ import { User } from '../../models/user.model';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
   signUpForm!: FormGroup;
   errorMessage: string | null = null;
+  isButtonDisabled = true;
+  private formSubscription!: Subscription;
+  roles = [
+    { value: 'passenger', name: 'Passenger' },
+    { value: 'sacco', name: 'Sacco' },
+    { value: 'owner', name: 'Owner' },
+    { value: 'queue_manager', name: 'Queue Manager' },
+    { value: 'driver', name: 'Driver' },
+    { value: 'support_staff', name: 'Support Staff' },
+    { value: 'admin', name: 'Admin' },
+    { value: 'superuser', name: 'Superuser' }
+  ];
 
   constructor(
     private fb: FormBuilder,
@@ -24,8 +37,19 @@ export class SignUpComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['', Validators.required]
     });
+
+    this.formSubscription = this.signUpForm.statusChanges.subscribe(status => {
+      this.isButtonDisabled = status === 'INVALID';
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.formSubscription) {
+      this.formSubscription.unsubscribe();
+    }
   }
 
   onSubmit(): void {
@@ -34,12 +58,8 @@ export class SignUpComponent implements OnInit {
     }
 
     this.errorMessage = null;
-    const { name, email, phone, password } = this.signUpForm.value;
-
-    // The spec says signup is for Support Staff and Admins.
-    // The UI doesn't have a role selector, so I'll default to 'support_staff'
-    // This might need to be adjusted based on user feedback.
-    const user: Partial<User> = { name, email, phone, password, role: 'support_staff' };
+    const { name, email, phone, password, role } = this.signUpForm.value;
+    const user: Partial<User> = { name, email, phone, password, role };
 
     this.authService.signup(user).subscribe({
       next: (user) => {

@@ -29,6 +29,17 @@
   </div>
 
   <div class="mb-3">
+    <label for="role" class="form-label">Role</label>
+    <select class="form-select" id="role" formControlName="role">
+      <option value="" disabled>Choose your role</option>
+      <option *ngFor="let role of roles" [value]="role.value">{{ role.name }}</option>
+    </select>
+    <div *ngIf="signUpForm.get('role')?.invalid && signUpForm.get('role')?.touched" class="text-danger">
+      Role is required.
+    </div>
+  </div>
+
+  <div class="mb-3">
     <label for="password" class="form-label">Password</label>
     <input type="password" class="form-control" id="password" formControlName="password">
     <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched" class="text-danger">
@@ -37,7 +48,7 @@
   </div>
 
   <div class="d-grid">
-    <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Sign Up</button>
+    <button type="submit" class="btn btn-primary" [disabled]="isButtonDisabled">Sign Up</button>
   </div>
 
   <div class="text-center mt-3">

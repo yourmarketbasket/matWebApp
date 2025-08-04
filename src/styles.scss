@@ -43,6 +43,10 @@ $dark-blue-card: lighten(#211951, 5%);
   label {
     color: var(--bs-emphasis-color);
   }
+
+  .form-floating > label {
+    color: var(--bs-emphasis-color);
+  }
 }
 
 // 3. Include remainder of required Bootstrap stylesheets
@@ -102,6 +106,10 @@ body {
   border: none;
   border-radius: 0.5rem;
   padding: 1.5rem;
+}
+
+.form-floating > label {
+  color: var(--bs-body-color);
 }
 
 // Custom button styles

@@ -5,9 +5,19 @@
   padding: 0.75rem 1.5rem;
   font-weight: 500;
   transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+.btn-pink {
+  background-color: $pink-light;
+  color: $pink-dark;
+  &:hover {
+    background-color: darken($pink-light, 5%);
+  }
 }
 
 .btn-outline-pink {
+  background-color: transparent;
   border: 2px solid $pink-dark;
   color: $pink-dark;
 
@@ -20,7 +30,6 @@
 .btn-green {
   background-color: $green-light;
   color: $green-dark;
-  border: none;
 
   &:hover {
     background-color: darken($green-light, 5%);
@@ -30,7 +39,6 @@
 .btn-amber {
   background-color: $amber-light;
   color: $amber-dark;
-  border: none;
 
   &:hover {
     background-color: darken($amber-light, 5%);
@@ -40,7 +48,6 @@
 .btn-purple {
   background-color: $purple-light;
   color: $purple-dark;
-  border: none;
 
   &:hover {
     background-color: darken($purple-light, 5%);

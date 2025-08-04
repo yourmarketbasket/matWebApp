@@ -1,60 +1,15 @@
 @import 'variables';
 
-// General form styling
-.form-control {
-  border-radius: 0.75rem;
-  padding: 1rem;
-  background-color: var(--bs-surface-bg);
-  color: var(--bs-body-color);
-  border: 1px solid var(--bs-border-color);
-
-  &:focus {
-    box-shadow: none;
-    border-color: var(--bs-primary);
-  }
-}
-
-.form-floating > label {
-  padding: 1rem;
-}
-
-// Theme specific styles
-.theme-pink {
-  --bs-primary: #{$pink-dark};
-  --bs-body-bg: #{$pink-light};
-  --bs-surface-bg: #ffffff;
+:root {
+  --bs-body-bg: #ffffff;
   --bs-body-color: #212121;
-  --bs-border-color: #f8bbd0;
+  --bs-surface-bg: #f5f5f5;
+  --bs-border-color: #e0e0e0;
 }
 
-.theme-purple {
-  --bs-primary: #{$purple-dark};
-  --bs-body-bg: #{$purple-light};
-  --bs-surface-bg: #ffffff;
-  --bs-body-color: #212121;
-  --bs-border-color: #e1bee7;
-}
-
-.theme-green {
-  --bs-primary: #{$green-dark};
-  --bs-body-bg: #{$green-light};
-  --bs-surface-bg: #ffffff;
-  --bs-body-color: #212121;
-  --bs-border-color: #c8e6c9;
-}
-
-.theme-amber {
-  --bs-primary: #{$amber-dark};
-  --bs-body-bg: #{$amber-light};
-  --bs-surface-bg: #ffffff;
-  --bs-body-color: #212121;
-  --bs-border-color: #ffecb3;
-}
-
-.theme-dark {
-  --bs-primary: #{$amber-dark};
+.dark-theme {
   --bs-body-bg: #{$dark-bg};
-  --bs-surface-bg: #{$dark-surface};
   --bs-body-color: #{$dark-text};
+  --bs-surface-bg: #{$dark-surface};
   --bs-border-color: #{$dark-border};
 }

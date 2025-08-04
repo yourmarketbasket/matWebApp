@@ -4,33 +4,6 @@
 @import "bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
-:root {
-  --bs-green: #4CAF50;
-  --bs-purple: #9C27B0;
-  --bs-pink: #E91E63;
-  --bs-black: #212121;
-  --bs-amber: #FFC107;
-
-  --bs-primary: var(--bs-green);
-  --bs-secondary: var(--bs-purple);
-
-  --bs-body-bg: #f5f5f5;
-  --bs-body-color: #212121;
-  --bs-surface-bg: #ffffff;
-}
-
-.dark-theme {
-  --bs-primary: var(--bs-amber);
-  --bs-secondary: var(--bs-pink);
-
-  --bs-body-bg: #212121;
-  --bs-body-color: #f5f5f5;
-  --bs-surface-bg: #333333;
-
-  --bs-tertiary-bg: #424242;
-  --bs-border-color: #555555;
-  --bs-emphasis-color: #ffffff;
-}
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "bootstrap/scss/variables";
@@ -86,6 +59,23 @@ body {
 
 .card {
     background-color: var(--bs-surface-bg);
+}
+
+.form-control {
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background-color: var(--bs-surface-bg);
+  color: var(--bs-body-color);
+  border: 1px solid var(--bs-border-color);
+
+  &:focus {
+    box-shadow: none;
+    border-color: var(--bs-primary);
+  }
+}
+
+.form-floating > label {
+  padding: 1rem;
 }
 
 // Custom theme files

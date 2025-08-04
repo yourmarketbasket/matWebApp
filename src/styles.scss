@@ -47,6 +47,10 @@ $dark-blue-card: lighten(#130c318c, 5%);
   .form-floating > label {
     color: var(--bs-emphasis-color);
   }
+
+  .card {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  }
 }
 
 // 3. Include remainder of required Bootstrap stylesheets
@@ -102,7 +106,7 @@ body {
 
 .card {
   background-color: var(--bs-surface-bg);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba($dark-blue-bg, 0.2);
   border: none;
   border-radius: 0.5rem;
   padding: 1.5rem;

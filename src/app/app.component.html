@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
-<main class="container mt-4">
+<app-navbar *ngIf="!isAuthPage"></app-navbar>
+<main [class.container]="!isAuthPage" [class.mt-4]="!isAuthPage">
   <router-outlet></router-outlet>
 </main>

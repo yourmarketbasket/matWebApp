@@ -8,48 +8,11 @@
   border: none;
 }
 
-.btn-pink {
-  background-color: $pink-light;
-  color: $pink-dark;
-  &:hover {
-    background-color: darken($pink-light, 5%);
-  }
-}
-
-.btn-outline-pink {
-  background-color: transparent;
-  border: 2px solid $pink-dark;
-  color: $pink-dark;
-
-  &:hover {
-    background-color: $pink-dark;
-    color: white;
-  }
-}
-
 .btn-green {
   background-color: $green-light;
-  color: $green-dark;
+  color: white;
 
   &:hover {
-    background-color: darken($green-light, 5%);
-  }
-}
-
-.btn-amber {
-  background-color: $amber-light;
-  color: $amber-dark;
-
-  &:hover {
-    background-color: darken($amber-light, 5%);
-  }
-}
-
-.btn-purple {
-  background-color: $purple-light;
-  color: $purple-dark;
-
-  &:hover {
-    background-color: darken($purple-light, 5%);
+    background-color: $green-dark;
   }
 }

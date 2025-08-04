@@ -15,7 +15,7 @@ $pink-2: #FF2DF1;
 $dark-blue-bg: lighten(#000211, 5%);
 $dark-blue-card: lighten(#130c318c, 5%);
 $success-green: #198754;
-$danger-red: #dc3545;
+$danger-red: $pink-1;
 $warning-yellow: #ffc107;
 
 
@@ -124,8 +124,8 @@ body {
   background-color: var(--bs-surface-bg);
   box-shadow: 0 4px 8px 0 rgba($dark-blue-bg, 0.1), 0 6px 20px 0 rgba($dark-blue-bg, 0.1);
   border: none;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 .form-floating > label {

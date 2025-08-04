@@ -8,6 +8,8 @@
   --bs-surface-bg: #{$card-bg};
   --bs-border-color: #{lighten($card-bg, 10%)};
   --bs-primary: #{$highlight-purple};
+  // light color theme
+  
 
   --auth-card-bg: var(--bs-surface-bg);
   --auth-card-color: white;
@@ -21,7 +23,7 @@
 // Dark Theme
 .dark-theme {
   --bs-body-bg: #{$dark-blue-bg};
-  --bs-body-color: white;
+  --bs-body-color: #{$light-bg};
 }
 
 .auth-card {

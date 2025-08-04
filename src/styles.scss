@@ -14,12 +14,22 @@ $pink-1: #FF2DD1;
 $pink-2: #FF2DF1;
 $dark-blue-bg: lighten(#000211, 5%);
 $dark-blue-card: lighten(#130c318c, 5%);
+$success-green: #198754;
+$danger-red: #dc3545;
+$warning-yellow: #ffc107;
+
 
 :root {
   --bs-primary: #{$primary-highlight};
   --bs-primary-rgb: #{red($primary-highlight)}, #{green($primary-highlight)}, #{blue($primary-highlight)};
   --bs-secondary: #{$secondary-yellow};
   --bs-secondary-rgb: #{red($secondary-yellow)}, #{green($secondary-yellow)}, #{blue($secondary-yellow)};
+  --bs-success: #{$success-green};
+  --bs-success-rgb: #{red($success-green)}, #{green($success-green)}, #{blue($success-green)};
+  --bs-danger: #{$danger-red};
+  --bs-danger-rgb: #{red($danger-red)}, #{green($danger-red)}, #{blue($danger-red)};
+  --bs-warning: #{$warning-yellow};
+  --bs-warning-rgb: #{red($warning-yellow)}, #{green($warning-yellow)}, #{blue($warning-yellow)};
 
   --bs-body-bg: #f5f5f5;
   --bs-body-color: #212121;
@@ -31,6 +41,12 @@ $dark-blue-card: lighten(#130c318c, 5%);
   --bs-primary-rgb: #{red($pink-1)}, #{green($pink-1)}, #{blue($pink-1)};
   --bs-secondary: #{$tertiary-aqua};
   --bs-secondary-rgb: #{red($tertiary-aqua)}, #{green($tertiary-aqua)}, #{blue($tertiary-aqua)};
+  --bs-success: #{lighten($success-green, 15%)};
+  --bs-success-rgb: #{red(lighten($success-green, 15%))}, #{green(lighten($success-green, 15%))}, #{blue(lighten($success-green, 15%))};
+  --bs-danger: #{lighten($danger-red, 15%)};
+  --bs-danger-rgb: #{red(lighten($danger-red, 15%))}, #{green(lighten($danger-red, 15%))}, #{blue(lighten($danger-red, 15%))};
+  --bs-warning: #{lighten($warning-yellow, 15%)};
+  --bs-warning-rgb: #{red(lighten($warning-yellow, 15%))}, #{green(lighten($warning-yellow, 15%))}, #{blue(lighten($warning-yellow, 15%))};
 
   --bs-body-bg: #{$dark-blue-bg};
   --bs-body-color: #f5f5f5;
@@ -158,6 +174,69 @@ body {
     &.disabled {
       background-color: rgba(var(--bs-secondary-rgb), 0.1) !important;
       color: rgba(var(--bs-secondary-rgb), 0.4) !important;
+      cursor: not-allowed;
+      border-color: transparent !important;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  &.btn-success {
+    background-color: rgba(var(--bs-success-rgb), 0.2);
+    color: color-mix(in srgb, var(--bs-success) 70%, black);
+    border-color: transparent;
+
+    &:hover {
+      background-color: rgba(var(--bs-success-rgb), 0.3);
+      transform: translateY(-2px);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: rgba(var(--bs-success-rgb), 0.1) !important;
+      color: rgba(var(--bs-success-rgb), 0.4) !important;
+      cursor: not-allowed;
+      border-color: transparent !important;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  &.btn-danger {
+    background-color: rgba(var(--bs-danger-rgb), 0.2);
+    color: color-mix(in srgb, var(--bs-danger) 70%, black);
+    border-color: transparent;
+
+    &:hover {
+      background-color: rgba(var(--bs-danger-rgb), 0.3);
+      transform: translateY(-2px);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: rgba(var(--bs-danger-rgb), 0.1) !important;
+      color: rgba(var(--bs-danger-rgb), 0.4) !important;
+      cursor: not-allowed;
+      border-color: transparent !important;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  &.btn-warning {
+    background-color: rgba(var(--bs-warning-rgb), 0.2);
+    color: color-mix(in srgb, var(--bs-warning) 70%, black);
+    border-color: transparent;
+
+    &:hover {
+      background-color: rgba(var(--bs-warning-rgb), 0.3);
+      transform: translateY(-2px);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: rgba(var(--bs-warning-rgb), 0.1) !important;
+      color: rgba(var(--bs-warning-rgb), 0.4) !important;
       cursor: not-allowed;
       border-color: transparent !important;
       transform: none;

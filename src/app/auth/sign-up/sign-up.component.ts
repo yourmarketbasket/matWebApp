@@ -1,24 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
-
-type UserRole = 'passenger' | 'sacco' | 'owner' | 'queue_manager' | 'driver' | 'support_staff' | 'admin' | 'superuser';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
-export class SignUpComponent {
-  name = '';
-  email = '';
-  phone = '';
-  password = '';
-  role: UserRole | '' = '';
-  acceptTerms = false;
+export class SignUpComponent implements OnInit {
+  signUpForm!: FormGroup;
   errorMessage: string | null = null;
-  submitted = false;
   roleMap = new Map<string, string>([
     ['passenger', 'Passenger'],
     ['sacco', 'Sacco'],
@@ -30,27 +23,38 @@ export class SignUpComponent {
     ['superuser', 'Superuser']
   ]);
   roles: string[] = Array.from(this.roleMap.keys());
+  submitted = false;
 
   constructor(
+    private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) {}
 
-  onSubmit(form: any): void {
+  ngOnInit(): void {
+    this.signUpForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['', Validators.required],
+      acceptTerms: [false, Validators.requiredTrue]
+    });
+  }
+
+  get f() { return this.signUpForm.controls; }
+
+  onSubmit(): void {
     this.submitted = true;
 
-    if (form.invalid) {
+    if (this.signUpForm.invalid) {
       return;
     }
 
     this.errorMessage = null;
-    const user: Partial<User> = {
-      name: this.name,
-      email: this.email,
-      phone: this.phone,
-      password: this.password,
-      role: this.role as UserRole
-    };
+    const { name, email, phone, password, role } = this.signUpForm.value;
+
+    const user: Partial<User> = { name, email, phone, password, role };
 
     this.authService.signup(user).subscribe({
       next: (user) => {

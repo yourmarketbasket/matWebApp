@@ -1,19 +1,27 @@
 @import 'variables';
 @import 'buttons';
 
+// Light Theme
 :root {
-  --bs-body-bg: #{$dark-blue-bg};
-  --bs-body-color: white;
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #212121;
   --bs-surface-bg: #{$card-bg};
   --bs-border-color: #{lighten($card-bg, 10%)};
+  --bs-primary: #{$highlight-purple};
 
   --auth-card-bg: var(--bs-surface-bg);
-  --auth-card-color: var(--bs-body-color);
+  --auth-card-color: white;
   --auth-form-control-bg: #{lighten($card-bg, 5%)};
-  --auth-form-control-color: var(--bs-body-color);
+  --auth-form-control-color: white;
   --auth-form-control-border: var(--bs-border-color);
   --auth-form-placeholder-color: #{lighten(white, 20%)};
   --auth-link-color: #{$pink-1};
+}
+
+// Dark Theme
+.dark-theme {
+  --bs-body-bg: #{$dark-blue-bg};
+  --bs-body-color: white;
 }
 
 .auth-card {
@@ -24,6 +32,10 @@
     background-color: var(--auth-form-control-bg);
     color: var(--auth-form-control-color);
     border-color: var(--auth-form-control-border);
+
+    &:focus {
+      border-color: var(--bs-primary);
+    }
 
     &::placeholder {
       color: var(--auth-form-placeholder-color);

@@ -1,28 +1,28 @@
 <h3 class="text-center mb-4">Login</h3>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
   <div class="alert alert-danger" *ngIf="errorMessage">
     {{ errorMessage }}
   </div>
 
-  <div class="mb-3">
-    <label for="email" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com">
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com" autocomplete="off">
+    <label for="email">Email address</label>
     <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
       Please enter a valid email.
     </div>
   </div>
 
-  <div class="mb-3">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" formControlName="password">
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="password" formControlName="password" placeholder="password" autocomplete="off">
+    <label for="password">Password</label>
      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
       Password is required.
     </div>
   </div>
 
-  <div class="mb-3">
-    <label for="mfaCode" class="form-label">MFA Code (if applicable)</label>
-    <input type="text" class="form-control" id="mfaCode" formControlName="mfaCode" placeholder="123456">
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="mfaCode" formControlName="mfaCode" placeholder="123456" autocomplete="off">
+    <label for="mfaCode">MFA Code (if applicable)</label>
   </div>
 
   <div class="d-grid">

@@ -6,11 +6,50 @@
   border: none;
 }
 
-.btn-green {
-  background-color: $green-light;
+.btn-pink {
+  background-color: $pink-1;
   color: white;
-
   &:hover {
-    background-color: $green-dark;
+    background-color: darken($pink-1, 10%);
+  }
+}
+
+.btn-yellow {
+  background-color: $yellow-1;
+  color: darken($yellow-1, 40%);
+  &:hover {
+    background-color: darken($yellow-1, 10%);
+  }
+}
+
+.btn-green-1 {
+  background-color: $green-1;
+  color: darken($green-1, 40%);
+  &:hover {
+    background-color: darken($green-1, 10%);
+  }
+}
+
+.btn-purple {
+  background-color: $purple-1;
+  color: white;
+  &:hover {
+    background-color: darken($purple-1, 10%);
+  }
+}
+
+.btn-green-2 {
+  background-color: $green-2;
+  color: white;
+  &:hover {
+    background-color: darken($green-2, 10%);
+  }
+}
+
+.btn-green-3 {
+  background-color: $green-3;
+  color: darken($green-3, 40%);
+  &:hover {
+    background-color: darken($green-3, 10%);
   }
 }

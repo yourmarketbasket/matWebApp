@@ -1,47 +1,19 @@
-// Elegant Theme Colors
-
-// Blue
-$form-bg-blue: #1a2035;
-$form-input-bg-blue: lighten($form-bg-blue, 5%);
-
-// Pink Theme
-$pink-light: #fce4ec;
-$pink-dark: #e91e63;
-
-// Purple Theme
-$purple-light: #f3e5f5;
-$purple-dark: #9c27b0;
-
-// Green Theme
-$green-light: #2a9d8f;
-$green-dark: #264653;
-
-// Amber Theme
-$amber-light: #fff8e1;
-$amber-dark: #ffc107;
-
-// Dark Theme
-$dark-bg: #121212;
-$dark-surface: #1e1e1e;
-$dark-text: #ffffff;
-$dark-border: #2c2c2c;
-
-
+@import 'variables';
 @import 'buttons';
 
 :root {
-  --bs-body-bg: #ffffff;
-  --bs-body-color: #212121;
-  --bs-surface-bg: #f5f5f5;
-  --bs-border-color: #e0e0e0;
+  --bs-body-bg: #{$dark-blue-bg};
+  --bs-body-color: white;
+  --bs-surface-bg: #{$purple-bg};
+  --bs-border-color: #{lighten($purple-bg, 10%)};
 
-  --auth-card-bg: #{$form-bg-blue};
-  --auth-card-color: white;
-  --auth-form-control-bg: #{$form-input-bg-blue};
-  --auth-form-control-color: white;
-  --auth-form-control-border: #{lighten($form-bg-blue, 10%)};
+  --auth-card-bg: var(--bs-surface-bg);
+  --auth-card-color: var(--bs-body-color);
+  --auth-form-control-bg: #{lighten($purple-bg, 5%)};
+  --auth-form-control-color: var(--bs-body-color);
+  --auth-form-control-border: var(--bs-border-color);
   --auth-form-placeholder-color: #{lighten(white, 20%)};
-  --auth-link-color: #{$pink-light};
+  --auth-link-color: #{$pink-1};
 }
 
 .auth-card {
@@ -65,19 +37,4 @@ $dark-border: #2c2c2c;
   a {
     color: var(--auth-link-color);
   }
-}
-
-.dark-theme {
-  --bs-body-bg: #{$dark-bg};
-  --bs-body-color: #{$dark-text};
-  --bs-surface-bg: #{$dark-surface};
-  --bs-border-color: #{$dark-border};
-
-  --auth-card-bg: #{$dark-surface};
-  --auth-card-color: #{$dark-text};
-  --auth-form-control-bg: #{lighten($dark-surface, 5%)};
-  --auth-form-control-color: #{$dark-text};
-  --auth-form-control-border: #{lighten($dark-surface, 10%)};
-  --auth-form-placeholder-color: #{lighten($dark-text, 20%)};
-  --auth-link-color: #{$pink-light};
 }

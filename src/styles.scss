@@ -4,15 +4,23 @@
 @import "bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
+$green: #4CAF50;
+$purple: #9C27B0;
+$pink: #E91E63;
+$black: #212121;
+$amber: #FFC107;
+
 :root {
-  --bs-green: #4CAF50;
-  --bs-purple: #9C27B0;
-  --bs-pink: #E91E63;
-  --bs-black: #212121;
-  --bs-amber: #FFC107;
+  --bs-green: #{$green};
+  --bs-purple: #{$purple};
+  --bs-pink: #{$pink};
+  --bs-black: #{$black};
+  --bs-amber: #{$amber};
 
   --bs-primary: var(--bs-green);
+  --bs-primary-rgb: #{red($green)}, #{green($green)}, #{blue($green)};
   --bs-secondary: var(--bs-purple);
+  --bs-secondary-rgb: #{red($purple)}, #{green($purple)}, #{blue($purple)};
 
   --bs-body-bg: #f5f5f5;
   --bs-body-color: #212121;
@@ -21,7 +29,9 @@
 
 .dark-theme {
   --bs-primary: var(--bs-amber);
+  --bs-primary-rgb: #{red($amber)}, #{green($amber)}, #{blue($amber)};
   --bs-secondary: var(--bs-pink);
+  --bs-secondary-rgb: #{red($pink)}, #{green($pink)}, #{blue($pink)};
 
   --bs-body-bg: #212121;
   --bs-body-color: #f5f5f5;
@@ -84,5 +94,59 @@ body {
 }
 
 .card {
-    background-color: var(--bs-surface-bg);
+  background-color: var(--bs-surface-bg);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+// Custom button styles
+.btn {
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+
+  &.btn-primary {
+    background-color: rgba(var(--bs-primary-rgb), 0.2);
+    color: color-mix(in srgb, var(--bs-primary) 70%, black);
+    border-color: transparent;
+
+    &:hover {
+      background-color: rgba(var(--bs-primary-rgb), 0.3);
+      transform: translateY(-2px);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: rgba(var(--bs-primary-rgb), 0.1) !important;
+      color: rgba(var(--bs-primary-rgb), 0.4) !important;
+      cursor: not-allowed;
+      border-color: transparent !important;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  &.btn-secondary {
+    background-color: rgba(var(--bs-secondary-rgb), 0.2);
+    color: color-mix(in srgb, var(--bs-secondary) 70%, black);
+    border-color: transparent;
+
+    &:hover {
+      background-color: rgba(var(--bs-secondary-rgb), 0.3);
+      transform: translateY(-2px);
+    }
+
+    &:disabled,
+    &.disabled {
+      background-color: rgba(var(--bs-secondary-rgb), 0.1) !important;
+      color: rgba(var(--bs-secondary-rgb), 0.4) !important;
+      cursor: not-allowed;
+      border-color: transparent !important;
+      transform: none;
+      box-shadow: none;
+    }
+  }
 }

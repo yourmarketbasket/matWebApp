@@ -35,13 +35,11 @@
 // 3. Include remainder of required Bootstrap stylesheets
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/variables-dark";
-
-// 4. Include any default map overrides here
-
-// 5. Include remainder of required parts
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
+
+// 4. Include any optional parts
 @import "bootstrap/scss/reboot";
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/images";
@@ -73,11 +71,13 @@
 @import "bootstrap/scss/offcanvas";
 @import "bootstrap/scss/placeholders";
 
-// 6. Optionally include utilities API as needed
+// 5. Optionally include utilities and helpers
 @import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities";
 @import "bootstrap/scss/utilities/api";
 
-// 7. Add additional custom code here
+
+// 6. Add additional custom code here
 body {
   background-color: var(--bs-body-bg);
   color: var(--bs-body-color);

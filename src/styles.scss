@@ -12,8 +12,8 @@ $quaternary-green: #16C47F;
 $quinary-mint: #00FF9C;
 $pink-1: #FF2DD1;
 $pink-2: #FF2DF1;
-$dark-blue-bg: #000957;
-$dark-blue-card: #211951;
+$dark-blue-bg: lighten(#000957, 5%);
+$dark-blue-card: lighten(#211951, 5%);
 
 :root {
   --bs-primary: #{$primary-highlight};
@@ -39,6 +39,10 @@ $dark-blue-card: #211951;
   --bs-tertiary-bg: #424242;
   --bs-border-color: #555555;
   --bs-emphasis-color: #ffffff;
+
+  label {
+    color: var(--bs-emphasis-color);
+  }
 }
 
 // 3. Include remainder of required Bootstrap stylesheets
@@ -94,7 +98,7 @@ body {
 
 .card {
   background-color: var(--bs-surface-bg);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   border: none;
   border-radius: 0.5rem;
   padding: 1.5rem;

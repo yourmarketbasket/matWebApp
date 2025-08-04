@@ -38,7 +38,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      role: ['', Validators.required]
+      role: ['', Validators.required],
+      terms: [false, Validators.requiredTrue]
     });
 
     this.formSubscription = this.signUpForm.statusChanges.subscribe(status => {

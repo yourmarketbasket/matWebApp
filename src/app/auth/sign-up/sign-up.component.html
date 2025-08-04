@@ -5,7 +5,7 @@
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Full Name">
+    <input type="text" class="form-control" id="name" formControlName="name">
     <label for="name">Full Name</label>
     <div *ngIf="submitted && f['name'].errors" class="text-danger">
       <div *ngIf="f['name'].errors['required']">Name is required</div>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="form-floating mb-3">
-    <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com">
+    <input type="email" class="form-control" id="email" formControlName="email">
     <label for="email">Email address</label>
     <div *ngIf="submitted && f['email'].errors" class="text-danger">
       <div *ngIf="f['email'].errors['required']">Email is required</div>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-floating mb-3">
-    <input type="tel" class="form-control" id="phone" formControlName="phone" placeholder="Phone Number">
+    <input type="tel" class="form-control" id="phone" formControlName="phone">
     <label for="phone">Phone Number</label>
     <div *ngIf="submitted && f['phone'].errors" class="text-danger">
       <div *ngIf="f['phone'].errors['required']">Phone number is required</div>
@@ -30,7 +30,7 @@
   </div>
 
   <div class="form-floating mb-3">
-    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+    <input type="password" class="form-control" id="password" formControlName="password">
     <label for="password">Password</label>
     <div *ngIf="submitted && f['password'].errors" class="text-danger">
       <div *ngIf="f['password'].errors['required']">Password is required</div>

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,12 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
-  constructor(private http: HttpClient) {
-    const user = localStorage.getItem('currentUser');
-    this.currentUserSubject = new BehaviorSubject<User | null>(user ? JSON.parse(user) : null);
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) {
+    const user = this.storageService.getItem('currentUser');
+    this.currentUserSubject = new BehaviorSubject<User | null>(user);
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -25,7 +29,7 @@ export class AuthService {
   login(email: string, password: string, mfaCode?: string): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/login`, { email, password, mfaCode })
       .pipe(tap(user => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.storageService.setItem('currentUser', user);
         this.currentUserSubject.next(user);
       }));
   }
@@ -33,7 +37,7 @@ export class AuthService {
   signup(user: Partial<User>): Observable<User> {
     return this.http.post<User>(`${this.apiUrl}/signup`, user)
       .pipe(tap(user => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.storageService.setItem('currentUser', user);
         this.currentUserSubject.next(user);
       }));
   }
@@ -59,17 +63,12 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('currentUser');
+    this.storageService.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
 
   getToken(): string | null {
     const user = this.currentUserValue;
-    // Assuming the token is stored in the user object as 'token'
-    // The spec says JWT is stored in local storage, but doesn't specify the key
-    // I will assume the whole user object (with token) is stored.
-    // And the token itself is a property on the user object.
-    // Let's assume the property is named `token`.
     return user ? (user as any).token : null;
   }
 

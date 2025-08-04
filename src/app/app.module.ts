@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withFetch } from '@angular/common/http';
 import { jwtInterceptor } from './auth/jwt.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +20,7 @@ import { CoreModule } from './core/core.module';
   ],
   providers: [
     provideClientHydration(),
-    provideHttpClient(withInterceptors([jwtInterceptor]))
+    provideHttpClient(withInterceptors([jwtInterceptor]), withFetch())
   ],
   bootstrap: [AppComponent]
 })

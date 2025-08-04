@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { jwtInterceptor } from './auth/jwt.interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -12,10 +15,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    CoreModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withInterceptors([jwtInterceptor]))
   ],
   bootstrap: [AppComponent]
 })

@@ -1,1 +1,47 @@
-<p>sign-up works!</p>
+<h3 class="text-center mb-4">Sign Up</h3>
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Full Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name">
+    <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="text-danger">
+      Name is required.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com">
+    <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched" class="text-danger">
+      Please enter a valid email.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="phone" class="form-label">Phone Number</label>
+    <input type="tel" class="form-control" id="phone" formControlName="phone">
+    <div *ngIf="signUpForm.get('phone')?.invalid && signUpForm.get('phone')?.touched" class="text-danger">
+      Phone number is required.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password">
+    <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched" class="text-danger">
+      Password must be at least 6 characters long.
+    </div>
+  </div>
+
+  <div class="d-grid">
+    <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Sign Up</button>
+  </div>
+
+  <div class="text-center mt-3">
+    <span>Already have an account? </span>
+    <a routerLink="/auth/login">Login</a>
+  </div>
+</form>

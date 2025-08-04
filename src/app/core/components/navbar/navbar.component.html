@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">SafarEasy</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <!-- Common links -->
+        <li class="nav-item" *ngIf="currentUser">
+          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </li>
+
+        <!-- Role-specific links -->
+        <li class="nav-item" *ngIf="currentUser?.role === 'superuser'">
+          <a class="nav-link" routerLink="/head-office">Head Office</a>
+        </li>
+        <li class="nav-item" *ngIf="currentUser?.role === 'support_staff'">
+          <a class="nav-link" routerLink="/support-staff">Support</a>
+        </li>
+        <li class="nav-item" *ngIf="currentUser?.role === 'admin'">
+          <a class="nav-link" routerLink="/admin">Admin</a>
+        </li>
+         <li class="nav-item" *ngIf="currentUser?.role === 'sacco'">
+          <a class="nav-link" routerLink="/sacco">Sacco</a>
+        </li>
+         <li class="nav-item" *ngIf="currentUser?.role === 'owner'">
+          <a class="nav-link" routerLink="/owner">Owner</a>
+        </li>
+        <li class="nav-item" *ngIf="currentUser?.role === 'driver'">
+          <a class="nav-link" routerLink="/driver">Driver</a>
+        </li>
+        <li class="nav-item" *ngIf="currentUser?.role === 'queue_manager'">
+          <a class="nav-link" routerLink="/queue-manager">Queue Manager</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item d-flex align-items-center me-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="themeSwitcher" [checked]="isDarkTheme" (change)="toggleTheme()">
+            <label class="form-check-label" for="themeSwitcher">{{ isDarkTheme ? 'Dark' : 'Light' }}</label>
+          </div>
+        </li>
+        <li class="nav-item" *ngIf="!currentUser">
+          <a class="nav-link" routerLink="/auth/login">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!currentUser">
+          <a class="nav-link" routerLink="/auth/sign-up">Sign Up</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="currentUser">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ currentUser.name }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item" (click)="logout()">Logout</button></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
